@@ -12,6 +12,7 @@ check:
 clean:
 	@rm -rf src/__pycache__/
 	@rm -rf tests/unit/__pycache__/
+	@rm schedule.xlsx
 
 .PHONY:
 	run
