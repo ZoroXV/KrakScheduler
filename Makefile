@@ -11,6 +11,7 @@ check:
 
 clean:
 	@rm -rf src/__pycache__/
+	@rm -rf tests/unit/__pycache__/
 
 .PHONY:
 	run
