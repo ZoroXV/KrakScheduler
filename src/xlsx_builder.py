@@ -6,10 +6,9 @@ def build_schedule(time_slots, workers, stands):
     individual_sheet = wb.add_worksheet('Individual')
 
     build_global_sheet_skeleton(global_sheet, time_slots, stands)
-
     build_individual_sheet_skeleton(individual_sheet, time_slots, workers)
 
-    wb.close()
+    return wb
 
 def build_global_sheet_skeleton(sheet, time_slots, stands):
     row = 1
@@ -19,7 +18,7 @@ def build_global_sheet_skeleton(sheet, time_slots, stands):
         sheet.write(row, 0, time_slot)
         row += 1
 
-    for stand in stands:
+    for stand, _ in stands:
         sheet.write(0, col, stand)
         col += 1
 

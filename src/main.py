@@ -16,10 +16,11 @@ def main():
         ]
 
     stands = [
-            'Bar',
-            'Entrée',
-            'Toilettes',
-            'Vestiaire'
+            ['Bar', 6],
+            ['Entrée', 4],
+            ['Toilettes', 2],
+            ['Vestiaire', 3]
         ]
 
-    build_schedule(time_slots, workers, stands)
+    wb = build_schedule(time_slots, workers, stands)
+    wb.close()
