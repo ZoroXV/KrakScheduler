@@ -1,4 +1,4 @@
-all: run
+all: check run
 
 run:
 	@python src/__init__.py
@@ -7,7 +7,7 @@ init:
 	@pip install -r requirements.txt
 
 check:
-	@echo "Running Tests..."
+	@python tests/unit/__init__.py -v
 
 clean:
 	@rm -rf src/__pycache__/
