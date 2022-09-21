@@ -17,17 +17,19 @@ def main():
         ]
 
     stands = [
-            ['Bar', 6],
             ['Entrée', 4],
+            ['Bar', 6],
             ['Toilettes', 2],
             ['Vestiaire', 3]
         ]
 
-    wb = build_schedule(time_slots, workers, stands)
+    wb, global_sheet, _ = build_schedule(time_slots, workers, stands)
 
-    scheduler = Scheduler(workers, stands)
+    scheduler = Scheduler(workers, stands, time_slots)
     scheduler.fill_schedule()
 
-    print(scheduler.get_schedule())
+    schedule = scheduler.get_schedule()
+    print(schedule)
+    fill_global_sheet(global_sheet, len(time_slots), schedule)
 
     wb.close()

@@ -8,7 +8,7 @@ def build_schedule(time_slots, workers, stands):
     build_global_sheet_skeleton(global_sheet, time_slots, stands)
     build_individual_sheet_skeleton(individual_sheet, time_slots, workers)
 
-    return wb
+    return (wb, global_sheet, individual_sheet)
 
 def build_global_sheet_skeleton(sheet, time_slots, stands):
     row = 1
@@ -32,4 +32,16 @@ def build_individual_sheet_skeleton(sheet, time_slots, workers):
 
     for worker in workers:
         sheet.write(row, 0, worker)
+        row += 1
+
+def fill_global_sheet(sheet, duration, schedule):
+    row = 1
+    col = 1
+
+    for stand in schedule:
+        workers = '\n'.join(schedule[stand])
+        for slot in range(0, duration):
+            sheet.write(row, col, workers)
+            col += 1
+        col = 1
         row += 1
