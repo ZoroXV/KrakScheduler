@@ -1,6 +1,7 @@
 all: check run
 
 run:
+	@clear
 	@python src/__init__.py
 
 init:
