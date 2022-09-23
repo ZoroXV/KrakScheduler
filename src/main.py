@@ -20,7 +20,7 @@ def main():
 
     list_workers = []
     for i in range(42):
-        worker = Worker("worker_" + str(i),1)
+        worker = Worker("worker_" + str(i), 1)
         list_workers.append(worker)
         event.add_staff(worker)
 
@@ -40,21 +40,19 @@ def main():
 
     wb, global_sheet, _ = build_schedule(event)
 
-    #scheduler = Scheduler(event)
+    scheduler = Scheduler(event)
     #scheduler.fill_schedule()
 #
     #schedule = scheduler.get_schedule()
+    print(scheduler.get_current_shift_remaining_places(3, entry_stand))
     #print(schedule)
+    
+    print(scheduler.get_current_shift_remaining_places(1, bar_stand))
     #fill_global_sheet(global_sheet, len(time_slots), schedule)
+    print(scheduler.get_current_shift_worker_list(1, bar_stand))
+
 
     wb.close()
-    
-    
-
-    datetime1 = datetime.datetime(2022,3,8,0,0,0)
-    datetime2 = datetime.datetime(2022,3,8,12,30,0)
-
-    print(datetime1 - datetime2)
 
 if __name__ == '__main__':
     main()

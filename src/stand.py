@@ -12,8 +12,14 @@ class Stand:
         self.staff_needed = staff_needed
         # list that will hold x list containing the names of the staff
         # x will be the length of the event
-        self.worker_list = []
-
+        self.worker_list = self.init_worker_list()
+    
+    def init_worker_list(self):
+        worker_list = []
+        for i in range(len(self.staff_needed)):
+            worker_list.append([])
+        return worker_list
+    
     # get name of the stand
     def get_name(self):
         return self.name
