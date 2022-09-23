@@ -1,14 +1,13 @@
 all: check run
 
 run:
-	@clear
 	@python src/__init__.py
 
 init:
 	@pip install -r requirements.txt
 
 check:
-	@python tests/unit/__init__.py -v
+	@pytest
 
 clean:
 	@rm -rf src/__pycache__/
