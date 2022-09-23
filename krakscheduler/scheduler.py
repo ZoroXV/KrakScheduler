@@ -1,5 +1,4 @@
 import random
-from event import Event
 
 class Scheduler:
     schedule = {}

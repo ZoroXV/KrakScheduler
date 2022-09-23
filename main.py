@@ -1,24 +1,20 @@
-from xlsx_builder import *
-from scheduler import Scheduler
-from event import Event
-from stand import Stand
-from worker import Worker
+import krakscheduler as ks
 import datetime
 
 def main():
     start_hour = datetime.datetime(2022, 9, 10, 23, 00, 00)
     end_hour = datetime.datetime(2022, 9, 11, 6, 00, 00)
-    event = Event("kraken_awakening", 0, 0, start_hour, end_hour)
-    entry_stand = Stand("entry_stand",  [6,6,6,6,0,0,0])
-    bar_stand = Stand("bar_stand", [8,6,6,6,4,4,4])
-    food_stand = Stand("food_stand",  [3,3,3,3,3,3,3])
-    loundry_stand = Stand("loundry_stand", [4,4,4,2,2,4,4])
-    photo_stand = Stand("photo_stand", [2,2,2,2,0,0,0])
-    toilet_stand = Stand("toilet_stand", [2,2,2,2,2,2,2])
+    event = ks.Event("kraken_awakening", 0, 0, start_hour, end_hour)
+    entry_stand = ks.Stand("entry_stand",  [6,6,6,6,0,0,0])
+    bar_stand = ks.Stand("bar_stand", [8,6,6,6,4,4,4])
+    food_stand = ks.Stand("food_stand",  [3,3,3,3,3,3,3])
+    loundry_stand = ks.Stand("loundry_stand", [4,4,4,2,2,4,4])
+    photo_stand = ks.Stand("photo_stand", [2,2,2,2,0,0,0])
+    toilet_stand = ks.Stand("toilet_stand", [2,2,2,2,2,2,2])
 
     list_workers = []
     for i in range(42):
-        worker = Worker("worker_" + str(i), 1)
+        worker = ks.Worker("worker_" + str(i), 1)
         list_workers.append(worker)
         event.add_staff(worker)
 
@@ -36,9 +32,9 @@ def main():
     print(event.get_nb_staffs())
 
 
-    wb, global_sheet, _ = build_schedule(event)
+    wb, global_sheet, _ = ks.build_schedule(event)
 
-    scheduler = Scheduler(event)
+    scheduler = ks.Scheduler(event)
     #scheduler.fill_schedule()
     #schedule = scheduler.get_schedule()
     print(scheduler.get_current_shift_remaining_places(3, entry_stand))
@@ -49,3 +45,6 @@ def main():
 
 
     wb.close()
+
+if __name__ == '__main__':
+    main()
