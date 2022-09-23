@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "krakscheduler"
+version = "0.0.1"
+description="An Automatic Scheduler"
+readme="README.md"
+requires-python=">=3.10"
+dependencies = [
+  "pytest",
+  "xlsxwriter"
+]
