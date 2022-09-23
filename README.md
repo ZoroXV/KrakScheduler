@@ -1,9 +1,24 @@
 # KrakScheduler
 
+## Setup Dev Environement
+You need to build the python package first.
+To achieve this you can use the Makefile with `init` task or do the following command:
+```
+pip install -e .
+```
+
+### Makefile
+A Makefile is provided for an easier use. The available tasks are:
+- `all`: Run the testsuite and then launch python application
+- `run`: Run the python application
+- `init`: Build and install locally the KrakenScheduler Package
+- `check`: Run the testsuite
+- `clean`: Remove generated files and build artifacts
+
 ## Implemented Features
 
 ## Further Features
-(Checked one will be available for the next release)
+Checked item will be in the 0.1 release
 
 - [X] Create a schedule for Kraken's Events
 - [X] Produce a xlsx file with global and individual view of the planning
