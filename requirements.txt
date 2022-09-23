@@ -1,2 +1,2 @@
-xlsxwriter
-pytest
+pytest==7.1.3
+XlsxWriter==3.0.3
