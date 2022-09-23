@@ -1,5 +1,4 @@
 from xlsx_builder import *
-import xlsxwriter
 from scheduler import Scheduler
 from event import Event
 from stand import Stand
@@ -7,7 +6,6 @@ from worker import Worker
 import datetime
 
 def main():
-
     start_hour = datetime.datetime(2022, 9, 10, 23, 00, 00)
     end_hour = datetime.datetime(2022, 9, 11, 6, 00, 00)
     event = Event("kraken_awakening", 0, 0, start_hour, end_hour)
@@ -42,17 +40,12 @@ def main():
 
     scheduler = Scheduler(event)
     #scheduler.fill_schedule()
-#
     #schedule = scheduler.get_schedule()
     print(scheduler.get_current_shift_remaining_places(3, entry_stand))
     #print(schedule)
-    
     print(scheduler.get_current_shift_remaining_places(1, bar_stand))
     #fill_global_sheet(global_sheet, len(time_slots), schedule)
     print(scheduler.get_current_shift_worker_list(1, bar_stand))
 
 
     wb.close()
-
-if __name__ == '__main__':
-    main()
