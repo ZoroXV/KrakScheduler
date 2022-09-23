@@ -27,7 +27,7 @@ class Event:
         return (self.end_hour - self.start_hour).seconds
 
     def get_hours_duration(self):
-        return int(self.get_event_seconds_duration() / 3600)
+        return int(self.get_seconds_duration() / 3600)
 
     def get_stands_list(self):
         return self.stands_list
