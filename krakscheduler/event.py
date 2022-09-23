@@ -1,19 +1,13 @@
 class Event:
-
     def __init__(self, name, nb_stands, nb_staff, start_hour, end_hour):
         self.name = name
         self.nb_stands = nb_stands
         self.nb_staff = nb_staff
-        # datetime format
         self.start_hour = start_hour
-        # datetime format
         self.end_hour = end_hour
-        # list that will hold stands class object
         self.stands_list = []
-        # list that will hold workers class object with all their attributes
         self.staffs_list = []
 
-    # get name of the event
     def get_name(self):
         return self.name
 
@@ -31,7 +25,7 @@ class Event:
 
     def get_event_seconds_duration(self):
         return (self.end_hour - self.start_hour).seconds
-    
+
     def get_event_hours_duration(self):
         return int(self.get_event_seconds_duration() / 3600)
 

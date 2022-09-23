@@ -1,7 +1,6 @@
 from asyncio import current_task
 from decimal import ROUND_DOWN
 import xlsxwriter
-from event import Event
 from datetime import datetime
 from datetime import timedelta
 
