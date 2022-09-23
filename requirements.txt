@@ -1,5 +1,2 @@
-XlsxWriter==3.0.3
-
-# pyqt5
-PyQt5
-PyQt5-tools
+xlsxwriter
+pytest
