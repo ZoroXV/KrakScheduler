@@ -9,10 +9,16 @@ def build_schedule(scheduler):
     global_sheet = wb.add_worksheet('Global')
     individual_sheet = wb.add_worksheet('Individual')
 
+    # set the width of the columns
+    global_sheet.set_column(0,scheduler.get_event().get_event_hours_duration(), 30)
+
     #build_global_sheet_skeleton(global_sheet, time_slots, stands)
     #build_individual_sheet_skeleton(individual_sheet, time_slots, workers)
 
-    build_stands_names(global_sheet, scheduler.get_event().get_stands_list())
+    # to set the format of a cell
+    cell_format = wb.add_format({'bold': True, 'font_color': 'red', 'align': 'center'})
+
+    build_stands_names(global_sheet, scheduler.get_event().get_stands_list(), cell_format)
     build_hours_slots(global_sheet, scheduler.get_event())
     build_workers_shifts(global_sheet, scheduler.get_stands_list())
 
@@ -54,12 +60,12 @@ def fill_global_sheet(sheet, duration, schedule):
         col = 1
         row += 1
 
-def build_stands_names(sheet, stands_list):
+def build_stands_names(sheet, stands_list, cell_format):
     row = 0
     col = 1
 
     for stand in stands_list:
-        sheet.write(row, col, stand.get_name())
+        sheet.write(row, col, stand.get_name(), cell_format)
         col += 1
 
 def build_hours_slots(sheet, event):
