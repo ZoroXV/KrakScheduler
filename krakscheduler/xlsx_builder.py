@@ -10,7 +10,7 @@ def build_schedule(scheduler):
     individual_sheet = wb.add_worksheet('Individual')
 
     # set the width of the columns
-    global_sheet.set_column(0,scheduler.get_event().get_event_hours_duration(), 30)
+    global_sheet.set_column(0,scheduler.get_event().get_hours_duration(), 30)
 
     #build_global_sheet_skeleton(global_sheet, time_slots, stands)
     #build_individual_sheet_skeleton(individual_sheet, time_slots, workers)
@@ -75,7 +75,7 @@ def build_hours_slots(sheet, event):
 
     start_current_shift = event.get_start_hour()
 
-    duration = event.get_event_hours_duration()
+    duration = event.get_hours_duration()
     print(duration)
     print(type(duration))
     for i in range (duration):

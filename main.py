@@ -16,7 +16,7 @@ def main():
     for i in range(42):
         worker = ks.Worker("worker_" + str(i), 1, [0,1,1,1,1,0,0])
         list_workers.append(worker)
-        event.add_staff(worker)
+        event.add_worker(worker)
 
 
     event.add_stand(entry_stand)
@@ -29,7 +29,7 @@ def main():
 
     print(event.get_name())
     print(event.get_nb_stands())
-    print(event.get_nb_staffs())
+    print(event.get_nb_workers())
 
 
     scheduler = ks.Scheduler(event)
