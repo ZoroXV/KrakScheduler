@@ -13,6 +13,7 @@ def test_stand_class():
     assert bar_stand.get_places(0) == 8
     assert bar_stand.get_free_places(0) == 8
     assert bar_stand.get_taken_places(0) == 0
+
     assert len(bar_stand.get_specific_shift_worker_list(0)) == 0
 
     ## Add staff on stand
@@ -22,6 +23,7 @@ def test_stand_class():
 
     assert len(bar_stand.get_specific_shift_worker_list(1)) != 0
     assert bar_stand.get_specific_shift_worker_list(1)[0].get_name() == "Dylan"
+
     assert bar_stand.get_free_places(1) == 5
     assert bar_stand.get_taken_places(1) == 1
 
@@ -31,7 +33,9 @@ def test_stand_class():
 
     ## Remove staff
     bar_stand.remove_worker(worker, 1)
+
     assert len(bar_stand.get_specific_shift_worker_list(1)) == 0
+
     assert bar_stand.get_free_places(1) == 6
     assert bar_stand.get_taken_places(1) == 0
 

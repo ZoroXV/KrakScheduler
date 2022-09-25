@@ -1,12 +1,12 @@
 class Event:
-    def __init__(self, name, nb_stands, nb_staff, start_hour, end_hour):
+    def __init__(self, name, nb_stands, nb_workers, start_hour, end_hour):
         self.name = name
         self.nb_stands = nb_stands
-        self.nb_staff = nb_staff
+        self.nb_workers = nb_workers
         self.start_hour = start_hour
         self.end_hour = end_hour
         self.stands_list = []
-        self.staffs_list = []
+        self.workers_list = []
 
     def get_name(self):
         return self.name
@@ -14,8 +14,8 @@ class Event:
     def get_nb_stands(self):
         return self.nb_stands
 
-    def get_nb_staffs(self):
-        return self.nb_staff
+    def get_nb_workers(self):
+        return self.nb_workers
 
     def get_start_hour(self):
         return self.start_hour
@@ -23,17 +23,17 @@ class Event:
     def get_end_hour(self):
         return self.end_hour
 
-    def get_event_seconds_duration(self):
+    def get_seconds_duration(self):
         return (self.end_hour - self.start_hour).seconds
 
-    def get_event_hours_duration(self):
-        return int(self.get_event_seconds_duration() / 3600)
+    def get_hours_duration(self):
+        return int(self.get_seconds_duration() / 3600)
 
     def get_stands_list(self):
         return self.stands_list
 
-    def get_staffs_list(self):
-        return self.staffs_list
+    def get_workers_list(self):
+        return self.workers_list
 
     def add_stand(self, stand):
         self.stands_list.append(stand)
@@ -43,10 +43,10 @@ class Event:
         self.stands_list.remove(stand)
         self.nb_stands -=1
 
-    def add_staff(self, staff):
-        self.staffs_list.append(staff)
-        self.nb_staff +=1
+    def add_worker(self, worker):
+        self.workers_list.append(worker)
+        self.nb_workers +=1
 
-    def remove_staff(self, staff):
-        self.staffs_list.remove(staff)
-        self.nb_staff -=1
+    def remove_worker(self, worker):
+        self.workers_list.remove(worker)
+        self.nb_workers -=1
