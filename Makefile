@@ -7,7 +7,7 @@ init:
 	@pip install -e .
 
 check:
-	PYTHONPATH=. pytest
+	@pytest
 
 clean:
 	@pip uninstall -y krakscheduler
