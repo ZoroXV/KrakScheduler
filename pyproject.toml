@@ -13,7 +13,8 @@ description="An Automatic Scheduler"
 readme="README.md"
 requires-python=">=3.8"
 dependencies = [
-  "xlsxwriter"
+  "xlsxwriter",
+  "pyYAML",
 ]
 
 [project.optional-dependencies]
