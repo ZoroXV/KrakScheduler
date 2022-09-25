@@ -44,3 +44,11 @@ class Event:
 
     def remove_worker(self, worker):
         self.workers_list.remove(worker)
+
+    def display(self):
+        print('{:=^64}'.format(self.name))
+        print('{}{:.>54}'.format('Begins at:', self.start_hour))
+        print('{}{:.>56}'.format('Ends at:', self.end_hour))
+        print('{:=^64}'.format(''))
+        print(self.stands_list)
+        print(self.workers_list)
