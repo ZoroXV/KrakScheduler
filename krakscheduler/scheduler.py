@@ -9,7 +9,7 @@ class Scheduler:
         # Stand object list
         self.stands_list = event.get_stands_list()
         # Worker object list
-        self.staffs_list = event.get_staffs_list()
+        self.workers_list = event.get_workers_list()
 
     def get_workers_for_stand(self, stand, duration):
         name, quantity = stand
@@ -31,8 +31,8 @@ class Scheduler:
     def get_stands_list(self):
         return self.stands_list
 
-    def get_staffs_list(self):
-        return self.staffs_list
+    def get_workers_list(self):
+        return self.workers_list
 
     # return the number of places left for the specific stand at a specific shift
     def get_current_shift_remaining_places(self, shift_index, stand):
