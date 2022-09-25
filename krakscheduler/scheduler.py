@@ -10,15 +10,6 @@ class Scheduler:
         self.stands_list = event.get_stands_list()
         # Worker object list
         self.staffs_list = event.get_staffs_list()
-        # list that will hold x histogram of taken staff for every hour
-        # for an event of 7 hour it will hold 7 histogram for example
-        self.taken_staffs = self.init_taken_staffs()
-
-    def init_taken_staffs(self):
-        taken_staffs = []
-        for i in range(self.event.get_event_hours_duration()):
-            taken_staffs.append([0]* len(self.staffs_list))
-        return taken_staffs
 
     def get_workers_for_stand(self, stand, duration):
         name, quantity = stand
@@ -34,6 +25,15 @@ class Scheduler:
     def get_schedule(self):
         return self.schedule
 
+    def get_event(self):
+        return self.event
+
+    def get_stands_list(self):
+        return self.stands_list
+
+    def get_staffs_list(self):
+        return self.staffs_list
+
     # return the number of places left for the specific stand at a specific shift
     def get_current_shift_remaining_places(self, shift_index, stand):
         return stand.get_free_places(shift_index)
@@ -44,6 +44,10 @@ class Scheduler:
 
     # return the list of current workers at a specific stand and at a specific shift
     def get_current_shift_worker_list(self, shift_index, stand):
-        return stand.get_worker_list(shift_index)
+        return stand.get_specific_shift_worker_list(shift_index)
 
     #def create_stands_columns(self, nb_stands, stands_lists)
+
+    # check if the staff is already taken for a shift at a specific time or not
+    def is_staff_available(self, worker, shift_index):
+        return worker.is_currently_staffing(self, shift_index)

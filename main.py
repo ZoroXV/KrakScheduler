@@ -14,7 +14,7 @@ def main():
 
     list_workers = []
     for i in range(42):
-        worker = ks.Worker("worker_" + str(i), 1)
+        worker = ks.Worker("worker_" + str(i), 1, [0,1,1,1,1,0,0])
         list_workers.append(worker)
         event.add_staff(worker)
 
@@ -32,8 +32,6 @@ def main():
     print(event.get_nb_staffs())
 
 
-    wb, global_sheet, _ = ks.build_schedule(event)
-
     scheduler = ks.Scheduler(event)
     #scheduler.fill_schedule()
     #schedule = scheduler.get_schedule()
@@ -42,6 +40,9 @@ def main():
     print(scheduler.get_current_shift_remaining_places(1, bar_stand))
     #fill_global_sheet(global_sheet, len(time_slots), schedule)
     print(scheduler.get_current_shift_worker_list(1, bar_stand))
+
+    wb, global_sheet, _ = ks.build_schedule(scheduler)
+
 
 
     wb.close()

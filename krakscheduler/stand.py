@@ -13,13 +13,13 @@ class Stand:
         # list that will hold x list containing the names of the staff
         # x will be the length of the event
         self.worker_list = self.init_worker_list()
-    
+
     def init_worker_list(self):
         worker_list = []
         for i in range(len(self.staff_needed)):
             worker_list.append([])
         return worker_list
-    
+
     # get name of the stand
     def get_name(self):
         return self.name
@@ -36,15 +36,25 @@ class Stand:
     def get_taken_places(self, shift_index):
         return self.taken_places[shift_index]
 
-    def get_worker_list(self, shift_index):
+    # get the list of all shifts list
+    def get_worker_list(self):
+        return self.worker_list
+
+    # get the list of the staffs at a specific shift
+    def get_specific_shift_worker_list(self, shift_index):
         return self.worker_list[shift_index]
 
-    def add_worker(self, worker_name, shift_index):
+    def get_staff_needed(self):
+        return self.staff_needed
+
+    def add_worker(self, worker, shift_index):
         self.taken_places[shift_index] += 1
         self.free_places[shift_index] -= 1
-        self.worker_list[shift_index].append(worker_name)
+        self.worker_list[shift_index].append(worker)
+        worker.add_shift(shift_index)
 
-    def remove_worker(self, worker_name, shift_index):
+    def remove_worker(self, worker, shift_index):
         self.taken_places[shift_index] -= 1
         self.free_places[shift_index] += 1
-        self.worker_list[shift_index].remove(worker_name)
+        self.worker_list[shift_index].remove(worker)
+        worker.remove_shift(shift_index)
