@@ -44,7 +44,7 @@ class Scheduler:
 
     # return the list of current workers at a specific stand and at a specific shift
     def get_current_shift_worker_list(self, shift_index, stand):
-        return stand.get_worker_list(shift_index)
+        return stand.get_specific_shift_worker_list(shift_index)
 
     #def create_stands_columns(self, nb_stands, stands_lists)
 
