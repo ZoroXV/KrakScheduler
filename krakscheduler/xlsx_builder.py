@@ -85,7 +85,6 @@ def build_hours_slots(sheet, event):
         start_current_shift = end_current_shift
 
 def build_workers_shifts(sheet, stands_list):
-    row = 1
     col = 1
     for stand in stands_list:
         row = 1
@@ -96,4 +95,4 @@ def build_workers_shifts(sheet, stands_list):
                 final_string += worker.get_name() + " "
             sheet.write(row, col, final_string)
             row += 1
-    col += 1
+        col += 1
