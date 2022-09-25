@@ -11,15 +11,16 @@ class Scheduler:
         # Worker object list
         self.workers_list = event.get_workers_list()
 
-    def get_workers_for_stand(self, stand, duration):
-        name, quantity = stand
-        quantity = quantity if quantity <= len(self.workers) else len(self.workers)
-
-        current_workers = random.sample(self.workers, quantity)
-        self.schedule[name] = current_workers
-
     def fill_schedule(self):
-        pass
+        workers = self.get_workers_list()
+        for stand in self.get_stands_list():
+            # Shifts
+            for i in range(len(stand.get_staff_needed())):
+                while(stand.get_free_places(i) > 0):
+                    current_worker = random.choice(workers)
+                    while self.is_worker_currently_working(current_worker, i) != 0:
+                        current_worker = random.choice(workers)
+                    stand.add_worker(current_worker, i)
 
     def get_schedule(self):
         return self.schedule
@@ -48,5 +49,5 @@ class Scheduler:
     #def create_stands_columns(self, nb_stands, stands_lists)
 
     # check if the staff is already taken for a shift at a specific time or not
-    def is_staff_available(self, worker, shift_index):
-        return worker.is_currently_staffing(self, shift_index)
+    def is_worker_currently_working(self, worker, shift_index):
+        return worker.is_currently_staffing(shift_index)
