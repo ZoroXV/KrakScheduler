@@ -6,7 +6,7 @@ class TestEvent():
     def setup_class(self):
         self.start_hour = datetime.datetime(2022, 9, 10, 23, 00, 00)
         self.end_hour = datetime.datetime(2022, 9, 11, 6, 00, 00)
-        self.event = ks.Event("test_event", 0, 0, self.start_hour, self.end_hour)
+        self.event = ks.Event("test_event", self.start_hour, self.end_hour)
 
     def test_get_name(self):
         assert self.event.get_name() == "test_event"
