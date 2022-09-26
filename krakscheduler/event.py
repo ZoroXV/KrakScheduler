@@ -1,3 +1,5 @@
+from datetime import datetime
+
 class Event:
     def __init__(self, name, start_hour, end_hour, stands_list=[], workers_list=[]):
         self.name = name
@@ -47,8 +49,8 @@ class Event:
 
     def display(self):
         print('{:=^64}'.format(self.name))
-        print('{}{:.>54}'.format('Begins at:', self.start_hour))
-        print('{}{:.>56}'.format('Ends at:', self.end_hour))
+        print('{}{:.>54}'.format('Begins at:', datetime.strftime(self.start_hour, '%d/%m/%Y %Hh%M')))
+        print('{}{:.>56}'.format('Ends at:', datetime.strftime(self.end_hour, '%d/%m/%Y %Hh%M')))
         print('{:=^64}'.format(''))
 
         print('{:=^64}'.format('Stands'))
