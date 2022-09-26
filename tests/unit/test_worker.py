@@ -4,13 +4,19 @@ import krakscheduler as ks
 
 class TestWorker:
     def setup_class(self):
-        self.worker = ks.Worker("Bob", 1, [0,1,1,1,1,1,0])
+        self.worker = ks.Worker("Bob", 1, [0,1,1,1,1,1,0], "staff")
 
     def teardown_method(self):
         self.worker.clear_shifts()
 
     def test_get_staff_shifts(self):
         assert self.worker.get_staff_shifts() == [0,0,0,0,0,0,0]
+
+    #assert worker.get_staff_shifts()[0] == 0
+    #assert worker.get_time_worked() == 0
+    #assert worker.is_currently_staffing(5) == 0
+    #assert worker.get_presence_duration() == 5
+    #assert worker.get_role() == "staff"
 
     def test_add_shift(self):
         self.worker.add_shift(2)
