@@ -50,5 +50,10 @@ class Event:
         print('{}{:.>54}'.format('Begins at:', self.start_hour))
         print('{}{:.>56}'.format('Ends at:', self.end_hour))
         print('{:=^64}'.format(''))
-        print(self.stands_list)
+
+        print('{:=^64}'.format('Stands'))
+        for stand in self.stands_list:
+            stand.display()
+
+        print('{:=^64}'.format('Workers'))
         print(self.workers_list)
