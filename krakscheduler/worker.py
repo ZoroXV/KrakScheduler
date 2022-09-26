@@ -24,6 +24,17 @@ class Worker:
     def get_time_worked(self):
         return self.time_worked
 
+    def get_priority(self, from_start):
+        priority = 0
+
+        for i in range(from_start + 1):
+            if self.staff_shifts[i]:
+                priority += 1
+            else:
+                priority -= 1
+
+        return priority
+
     def get_worker_stand_priority(self):
         return self.worker_stand_priority
 
