@@ -58,4 +58,5 @@ class Event:
             stand.display()
 
         print('{:=^64}'.format('Workers'))
-        print(self.workers_list)
+        for worker in self.workers_list:
+            worker.display()
