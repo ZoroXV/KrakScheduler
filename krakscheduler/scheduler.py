@@ -51,3 +51,7 @@ class Scheduler:
     # check if the staff is already taken for a shift at a specific time or not
     def is_worker_currently_working(self, worker, shift_index):
         return worker.is_currently_staffing(shift_index)
+
+    # maximum hours of staff that a worker can do
+    def staff_already_worked_too_much(self, worker):
+        return worker.get_time_worked() >= 4
