@@ -58,3 +58,7 @@ class Stand:
         self.free_places[shift_index] += 1
         self.worker_list[shift_index].remove(worker)
         worker.remove_shift(shift_index)
+
+    def display(self):
+        print('{}{:.>59}'.format('Name:', self.name))
+        print(self.staff_needed)
