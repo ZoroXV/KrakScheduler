@@ -1,6 +1,8 @@
 import yaml
 import krakscheduler as ks
 
+from datetime import datetime
+
 def load_config_file(filename):
     with open(filename) as file:
         try:
@@ -11,8 +13,12 @@ def load_config_file(filename):
 
 def build_event(filename = 'event-config.yml'):
     data = load_config_file(filename)
+
     time = data['time']
-    event = ks.Event(data['name'], time['start'], time['end'])
+    start_date = datetime.strptime(time['start'], '%d-%m-%Y %H:%M')
+    end_date = datetime.strptime(time['end'], '%d-%m-%Y %H:%M')
+
+    event = ks.Event(data['name'], start_date, end_date)
 
     stands = data['stands']
     for _, stand in stands.items():
