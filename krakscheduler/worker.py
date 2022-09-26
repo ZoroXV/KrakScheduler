@@ -38,3 +38,6 @@ class Worker:
     def remove_shift(self, shift_index):
         self.staff_shifts[shift_index] = 0
         self.time_worked -= 1
+
+    def display(self):
+        print(self.name)
