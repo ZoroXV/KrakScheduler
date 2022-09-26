@@ -1,6 +1,26 @@
 # KrakScheduler
 
-## Setup Dev Environement
+## Usage
+To use KrakScheduler you have to configure your event with a YAML file.
+You also need to give a CSV file (not implemented yet) to fill the workers list available to fill the schedule.
+
+### Event Config File Template
+Following this sentence you will find a template for the config file.
+```yaml
+---
+name: <Your Event Name>
+time:
+  start: <DD-MM-YYYY HH:MM>
+  end: <DD-MM-YYYY HH:MM>
+stands:
+  0:
+    name: <Stand Name>
+    workers:
+      - [X,X,X,X,X,X,X]
+```
+
+
+### Setup Dev Environement
 You need to build the python package first.
 To achieve this you can use the Makefile with `init` task or do the following command:
 ```
