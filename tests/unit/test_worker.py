@@ -44,3 +44,13 @@ class TestWorker:
         self.worker.clear_shifts()
         assert self.worker.get_staff_shifts() == [0,0,0,0,0,0,0]
         assert self.worker.get_time_worked() == 0
+
+    def test_get_priority(self):
+        assert self.worker.get_priority(3) == -4
+
+        self.worker.add_shift(0)
+        assert self.worker.get_priority(3) == -2
+
+        self.worker.add_shift(1)
+        self.worker.add_shift(2)
+        assert self.worker.get_priority(3) == 2
