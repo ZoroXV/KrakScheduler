@@ -33,8 +33,6 @@ def build_hours_slots(sheet, event):
     start_current_shift = event.get_start_hour()
 
     duration = event.get_hours_duration()
-    print(duration)
-    print(type(duration))
     for i in range (duration):
         end_current_shift = start_current_shift + timedelta(hours = 1)
         sheet.write(row, col, start_current_shift.strftime(time_format) + " - " + end_current_shift.strftime(time_format))
