@@ -1,13 +1,13 @@
 class Worker:
     worker = {}
 
-    def __init__(self, name, hours_present, is_manager=False, stands_priority=[]):
+    def __init__(self, name, hours_present, manager=False, stands_priority=[]):
         self.name = name
         self.hours_present = hours_present
         self.staff_shifts = [0] * len(self.hours_present)
         self.time_worked = 0
         self.worker_stand_priority = stands_priority
-        self.is_manager = is_manager
+        self.manager = manager
 
     def is_present(self):
         return self.present
@@ -23,7 +23,7 @@ class Worker:
         return self.hours_present.count(1)
 
     def is_manager(self):
-        return self.is_manager
+        return self.manager
 
     def get_staff_shifts(self):
         return self.staff_shifts

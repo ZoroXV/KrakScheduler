@@ -47,6 +47,14 @@ class Event:
     def remove_worker(self, worker):
         self.workers_list.remove(worker)
 
+    def get_managers(self):
+        managers = []
+        for worker in self.workers_list:
+            print(worker.get_name() + ' => ' + str(worker.is_manager()))
+            if worker.is_manager():
+                managers.append(worker)
+        return managers
+
     def display(self):
         print('{:=^64}'.format(self.name))
         print('{}{:.>54}'.format('Begins at:', datetime.strftime(self.start_hour, '%d/%m/%Y %Hh%M')))
