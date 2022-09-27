@@ -65,4 +65,5 @@ class Stand:
 
     def display(self):
         print('{}{:.>59}'.format('Name:', self.name))
+        print('{}{:.>43}'.format('Stand need a manager:', str(self.need_manager)))
         print(self.staff_needed)
