@@ -50,5 +50,7 @@ Checked item will be in the 0.1 release
   - Define stands needed for the event
   - Define workers needed each hour for stands
 - [X] Possibility to define different quantity of workers needed on a stand for each time slot
+- [X] Stand can required a manager or not
+- [X] Worker can be a manager
 - [ ] Add the posibility to give a break during the event for each worker
 - [ ] Add colors and style in the produced xlsx
