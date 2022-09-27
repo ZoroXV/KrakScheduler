@@ -45,3 +45,16 @@ class TestEvent():
             worker = ks.Worker("manager_" + str(i), [0,1,1,1,1,0,0], True)
             self.event.add_worker(worker)
         assert len(self.event.get_managers()) == 2
+
+    def test_get_stands_with_manager(self):
+        assert len(self.event.get_stands_with_manager()) == 0
+
+        stand_no_manager = ks.Stand("no_manager_stand", [1] * 7)
+        self.event.add_stand(stand_no_manager)
+
+        stand_manager = ks.Stand("manager_stand", [1] * 7, True)
+        self.event.add_stand(stand_manager)
+
+        stands = self.event.get_stands_with_manager()
+        assert len(stands) == 1
+        assert stands[0].get_name() == 'manager_stand'
