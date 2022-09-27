@@ -14,7 +14,7 @@ class TestWorker:
 
     #assert worker.get_staff_shifts()[0] == 0
     #assert worker.get_time_worked() == 0
-    #assert worker.is_currently_staffing(5) == 0
+    #assert worker.is_working(5) == 0
     #assert worker.get_presence_duration() == 5
     #assert worker.get_role() == "staff"
 
@@ -22,9 +22,9 @@ class TestWorker:
         self.worker.add_shift(2)
         self.worker.add_shift(5)
 
-        assert self.worker.is_currently_staffing(1) == False
-        assert self.worker.is_currently_staffing(2) == True
-        assert self.worker.is_currently_staffing(5) == True
+        assert self.worker.is_working(1) == False
+        assert self.worker.is_working(2) == True
+        assert self.worker.is_working(5) == True
 
     def test_get_time_worked(self):
         assert self.worker.get_time_worked() == 0
@@ -35,10 +35,10 @@ class TestWorker:
 
     def test_remove_shift(self):
         self.worker.add_shift(2)
-        assert self.worker.is_currently_staffing(2) == True
+        assert self.worker.is_working(2) == True
 
         self.worker.remove_shift(2)
-        assert self.worker.is_currently_staffing(2) == False
+        assert self.worker.is_working(2) == False
         assert self.worker.get_time_worked() == 0
 
     def test_clear_shifts(self):
