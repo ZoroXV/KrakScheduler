@@ -57,6 +57,12 @@ class Stand:
         self.worker_list[shift_index].append(worker)
         worker.add_shift(shift_index)
 
+    def add_worker_all(self, worker):
+        available_slot = worker.get_hours_present()
+        for i in range(len(self.staff_needed)):
+            if available_slot[i]:
+                self.add_worker(worker, i)
+
     def remove_worker(self, worker, shift_index):
         self.taken_places[shift_index] -= 1
         self.free_places[shift_index] += 1
