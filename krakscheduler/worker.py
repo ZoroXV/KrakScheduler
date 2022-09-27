@@ -42,11 +42,11 @@ class Worker:
 
     def get_worker_stand_priority(self):
         return self.worker_stand_priority
-    
+
     def get_role(self):
         return self.role
 
-    def is_currently_staffing(self, shift_index):
+    def is_working(self, shift_index):
         return self.staff_shifts[shift_index] == 1
 
     def add_shift(self, shift_index):
