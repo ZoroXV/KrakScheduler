@@ -2,32 +2,55 @@ import pytest
 import datetime
 import krakscheduler as ks
 
-def test_worker_class():
+class TestWorker:
+    def setup_class(self):
+        self.worker = ks.Worker("Bob", 1, [0,1,1,1,1,1,0])
 
-    # init test structure
-    worker = ks.Worker("Dylan", 1, [0,1,1,1,1,1,0])
+    def teardown_method(self):
+        self.worker.clear_shifts()
 
-    # basic test
-    assert worker.is_present() == 1
-    assert worker.get_name() == "Dylan"
-    assert worker.get_hours_present()[6] == 0
-    assert worker.get_hours_present()[5] == 1
-    assert worker.get_staff_shifts()[0] == 0
-    assert worker.get_time_worked() == 0
-    assert worker.is_currently_staffing(5) == 0
+    def test_get_staff_shifts(self):
+        assert self.worker.get_staff_shifts() == [0,0,0,0,0,0,0]
 
-    # Add shift
-    worker.add_shift(2)
-    worker.add_shift(5)
+    def test_add_shift(self):
+        self.worker.add_shift(2)
+        self.worker.add_shift(5)
 
-    assert worker.is_currently_staffing(1) == False
-    assert worker.is_currently_staffing(2) == True
-    assert worker.is_currently_staffing(5) == True
+        assert self.worker.is_currently_staffing(1) == False
+        assert self.worker.is_currently_staffing(2) == True
+        assert self.worker.is_currently_staffing(5) == True
 
-    assert worker.get_time_worked() == 2
+    def test_get_time_worked(self):
+        assert self.worker.get_time_worked() == 0
 
-    # Remove shift
-    worker.remove_shift(2)
+        self.worker.add_shift(2)
+        self.worker.add_shift(5)
+        assert self.worker.get_time_worked() == 2
 
-    assert worker.is_currently_staffing(2) == False
-    assert worker.get_time_worked() == 1
+    def test_remove_shift(self):
+        self.worker.add_shift(2)
+        assert self.worker.is_currently_staffing(2) == True
+
+        self.worker.remove_shift(2)
+        assert self.worker.is_currently_staffing(2) == False
+        assert self.worker.get_time_worked() == 0
+
+    def test_clear_shifts(self):
+        self.worker.add_shift(3)
+        self.worker.add_shift(4)
+        assert self.worker.get_staff_shifts() == [0,0,0,1,1,0,0]
+        assert self.worker.get_time_worked() == 2
+
+        self.worker.clear_shifts()
+        assert self.worker.get_staff_shifts() == [0,0,0,0,0,0,0]
+        assert self.worker.get_time_worked() == 0
+
+    def test_get_priority(self):
+        assert self.worker.get_priority(3) == -4
+
+        self.worker.add_shift(0)
+        assert self.worker.get_priority(3) == -2
+
+        self.worker.add_shift(1)
+        self.worker.add_shift(2)
+        assert self.worker.get_priority(3) == 2

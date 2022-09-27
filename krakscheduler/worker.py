@@ -9,7 +9,6 @@ class Worker:
         self.time_worked = 0
         self.worker_stand_priority = stands_priority
 
-    # Tell if the worker will be present at the event or not
     def is_present(self):
         return self.present
 
@@ -25,6 +24,17 @@ class Worker:
     def get_time_worked(self):
         return self.time_worked
 
+    def get_priority(self, from_start):
+        priority = 0
+
+        for i in range(from_start + 1):
+            if self.staff_shifts[i]:
+                priority += 1
+            else:
+                priority -= 1
+
+        return priority
+
     def get_worker_stand_priority(self):
         return self.worker_stand_priority
 
@@ -39,5 +49,10 @@ class Worker:
         self.staff_shifts[shift_index] = 0
         self.time_worked -= 1
 
+    def clear_shifts(self):
+        self.staff_shifts = [0] * len(self.hours_present)
+        self.time_worked = 0
+
     def display(self):
         print(self.name)
+
