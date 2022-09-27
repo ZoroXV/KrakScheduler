@@ -42,3 +42,13 @@ def test_stand_class():
     assert worker.is_working(1) == False
     assert worker.get_staff_shifts()[1] == 0
     assert worker.get_time_worked() == 0
+
+def test_add_worker_all():
+    bar_stand = ks.Stand("bar_stand", [8,6,6,6,4,4,4])
+    worker = ks.Worker("Dylan", [0,1,1,1,1,1,0])
+
+    assert worker.get_staff_shifts() == [0] * len(worker.get_hours_present())
+
+    bar_stand.add_worker_all(worker)
+
+    assert worker.get_staff_shifts() == worker.get_hours_present()
