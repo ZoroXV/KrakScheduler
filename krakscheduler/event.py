@@ -76,3 +76,11 @@ class Event:
             worker.display()
 
         print('{:=^64}'.format('Event End'))
+
+    def pick_random_free_manager(self):
+        managers = self.get_managers()
+        for manager in managers:
+            if manager.get_time_worked() == 0:
+                return manager
+
+        return None
