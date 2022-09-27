@@ -8,6 +8,10 @@ def main():
         worker = ks.Worker("worker_" + str(i), [0,1,1,1,1,0,0])
         event.add_worker(worker)
 
+    for i in range(50, 100):
+        worker = ks.Worker("worker_" + str(i), [1,1,0,0,1,1,1])
+        event.add_worker(worker)
+
     #Init Stand Manager
     for i in range(len(event.get_stands_list())):
         worker = ks.Worker("manager_" + str(i), [1,1,1,1,1,1,1], True)
