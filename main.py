@@ -10,7 +10,7 @@ def main():
 
     #Init Stand Manager
     for i in range(len(event.get_stands_list())):
-        worker = ks.Worker("manager_" + str(i), [0,1,1,1,1,0,0], True)
+        worker = ks.Worker("manager_" + str(i), [1,1,1,1,1,1,1], True)
         event.add_worker(worker)
 
     event.display()
