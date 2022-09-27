@@ -49,7 +49,7 @@ def build_workers_shifts(sheet, stands_list):
             workers = stand.get_specific_shift_worker_list(i)
             final_string = ""
             for worker in workers:
-                final_string += worker.get_name() + " "
+                final_string += worker.get_name() + '\n'
             sheet.write(row, col, final_string)
             row += 1
         col += 1
