@@ -1,6 +1,6 @@
 class Stand:
 
-    def __init__(self, name, staff_needed):
+    def __init__(self, name, staff_needed, need_manager=False):
         self.name = name
         # list of free places
         self.free_places = staff_needed
@@ -13,6 +13,7 @@ class Stand:
         # list that will hold x list containing the names of the staff
         # x will be the length of the event
         self.worker_list = self.init_worker_list()
+        self.need_manager = need_manager
 
     def init_worker_list(self):
         worker_list = []
@@ -46,6 +47,9 @@ class Stand:
 
     def get_staff_needed(self):
         return self.staff_needed
+
+    def is_manager_need(self):
+        return self.need_manager
 
     def add_worker(self, worker, shift_index):
         self.taken_places[shift_index] += 1
