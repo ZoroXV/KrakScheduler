@@ -1,5 +1,4 @@
 from asyncio import current_task
-from decimal import ROUND_DOWN
 import xlsxwriter
 from datetime import datetime
 from datetime import timedelta
@@ -9,13 +8,7 @@ def build_schedule(scheduler):
     global_sheet = wb.add_worksheet('Global')
     individual_sheet = wb.add_worksheet('Individual')
 
-    # set the width of the columns
     global_sheet.set_column(0,scheduler.get_event().get_hours_duration(), 30)
-
-    #build_global_sheet_skeleton(global_sheet, time_slots, stands)
-    #build_individual_sheet_skeleton(individual_sheet, time_slots, workers)
-
-    # to set the format of a cell
     cell_format = wb.add_format({'bold': True, 'font_color': 'red', 'align': 'center'})
 
     build_stands_names(global_sheet, scheduler.get_event().get_stands_list(), cell_format)
@@ -23,42 +16,6 @@ def build_schedule(scheduler):
     build_workers_shifts(global_sheet, scheduler.get_stands_list())
 
     return (wb, global_sheet, individual_sheet)
-
-def build_global_sheet_skeleton(sheet, time_slots, stands):
-    row = 1
-    col = 1
-
-    for time_slot in time_slots:
-        sheet.write(row, 0, time_slot)
-        row += 1
-
-    for stand, _ in stands:
-        sheet.write(0, col, stand)
-        col += 1
-
-def build_individual_sheet_skeleton(sheet, time_slots, workers):
-    row = 1
-    col = 1
-
-    for time_slot in time_slots:
-        sheet.write(0, col, time_slot)
-        col += 1
-
-    for worker in workers:
-        sheet.write(row, 0, worker)
-        row += 1
-
-def fill_global_sheet(sheet, duration, schedule):
-    row = 1
-    col = 1
-
-    for stand in schedule:
-        workers = '\n'.join(schedule[stand])
-        for slot in range(0, duration):
-            sheet.write(row, col, workers)
-            col += 1
-        col = 1
-        row += 1
 
 def build_stands_names(sheet, stands_list, cell_format):
     row = 0
