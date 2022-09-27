@@ -5,8 +5,8 @@ def main():
     event = ks.build_event()
 
     list_workers = []
-    for i in range(20):
-        worker = ks.Worker("worker_" + str(i), 1, [0,1,1,1,1,0,0])
+    for i in range(42):
+        worker = ks.Worker("worker_" + str(i), 1, [0,1,1,1,1,0,0], "staff")
         list_workers.append(worker)
         event.add_worker(worker)
 
