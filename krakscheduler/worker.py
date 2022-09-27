@@ -1,14 +1,13 @@
 class Worker:
     worker = {}
 
-    def __init__(self, name, present, hours_present, role, stands_priority=[]):
+    def __init__(self, name, hours_present, is_manager=False, stands_priority=[]):
         self.name = name
-        self.present = present
         self.hours_present = hours_present
         self.staff_shifts = [0] * len(self.hours_present)
         self.time_worked = 0
         self.worker_stand_priority = stands_priority
-        self.role = role
+        self.is_manager = is_manager
 
     def is_present(self):
         return self.present
@@ -22,6 +21,9 @@ class Worker:
     # get the duration in terms of hours that the staff will work, returns an int
     def get_presence_duration(self):
         return self.hours_present.count(1)
+
+    def is_manager(self):
+        return self.is_manager
 
     def get_staff_shifts(self):
         return self.staff_shifts
@@ -62,5 +64,6 @@ class Worker:
         self.time_worked = 0
 
     def display(self):
-        print(self.name)
+        manager_str = '(manager)' if self.is_manager else ''
+        print(self.name + ' ' + manager_str)
 
