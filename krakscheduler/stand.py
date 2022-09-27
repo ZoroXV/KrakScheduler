@@ -60,7 +60,7 @@ class Stand:
     def add_worker_all(self, worker):
         available_slot = worker.get_hours_present()
         for i in range(len(self.staff_needed)):
-            if available_slot[i]:
+            if available_slot[i] and self.staff_needed[i] > 0:
                 self.add_worker(worker, i)
 
     def remove_worker(self, worker, shift_index):
