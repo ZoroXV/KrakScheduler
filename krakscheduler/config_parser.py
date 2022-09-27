@@ -22,7 +22,10 @@ def build_event(filename = 'event-config.yml'):
 
     stands = data['stands']
     for _, stand in stands.items():
-        stand = ks.Stand(stand['name'], stand['workers'][0])
+        need_manager = False
+        if 'need_manager' in stand.keys():
+            need_manager = True
+        stand = ks.Stand(stand['name'], stand['workers'][0], need_manager)
         event.add_stand(stand)
 
     return event
