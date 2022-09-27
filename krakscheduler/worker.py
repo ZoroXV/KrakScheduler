@@ -64,6 +64,6 @@ class Worker:
         self.time_worked = 0
 
     def display(self):
-        manager_str = '(manager)' if self.is_manager else ''
+        manager_str = '(manager)' if self.manager else ''
         print(self.name + ' ' + manager_str)
 
