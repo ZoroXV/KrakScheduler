@@ -34,3 +34,14 @@ class TestEvent():
 
     def test_get_workers_list(self):
         assert not self.event.get_workers_list()
+
+    def test_get_managers(self):
+        for i in range(8):
+            worker = ks.Worker("worker_" + str(i), [0,1,1,1,1,0,0])
+            self.event.add_worker(worker)
+        assert len(self.event.get_managers()) == 0
+
+        for i in range(2):
+            worker = ks.Worker("manager_" + str(i), [0,1,1,1,1,0,0], True)
+            self.event.add_worker(worker)
+        assert len(self.event.get_managers()) == 2
