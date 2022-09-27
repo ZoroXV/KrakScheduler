@@ -13,7 +13,7 @@ def build_schedule(scheduler):
 
     build_stands_names(global_sheet, scheduler.get_event().get_stands_list(), cell_format)
     build_hours_slots(global_sheet, scheduler.get_event())
-    build_workers_shifts(global_sheet, scheduler.get_stands_list())
+    build_workers_shifts(global_sheet, scheduler.get_event().get_stands_list())
 
     return (wb, global_sheet, individual_sheet)
 
