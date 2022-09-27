@@ -27,7 +27,7 @@ def test_stand_class():
     assert bar_stand.get_free_places(1) == 5
     assert bar_stand.get_taken_places(1) == 1
 
-    assert worker.is_currently_staffing(1) == True
+    assert worker.is_working(1) == True
     assert worker.get_staff_shifts()[1] == 1
     assert worker.get_time_worked() == 1
 
@@ -39,6 +39,6 @@ def test_stand_class():
     assert bar_stand.get_free_places(1) == 6
     assert bar_stand.get_taken_places(1) == 0
 
-    assert worker.is_currently_staffing(1) == False
+    assert worker.is_working(1) == False
     assert worker.get_staff_shifts()[1] == 0
     assert worker.get_time_worked() == 0
