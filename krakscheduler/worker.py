@@ -9,9 +9,6 @@ class Worker:
         self.worker_stand_priority = stands_priority
         self.manager = manager
 
-    def is_present(self):
-        return self.present
-
     def get_name(self):
         return self.name
 
@@ -62,6 +59,9 @@ class Worker:
     def clear_shifts(self):
         self.staff_shifts = [None] * len(self.hours_present)
         self.time_worked = 0
+
+    def is_current_shift_present(self, shift_index):
+        return self.hours_present[shift_index] == 1
 
     def display(self):
         manager_str = '(manager)' if self.manager else ''
