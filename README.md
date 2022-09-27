@@ -15,6 +15,7 @@ time:
 stands:
   0:
     name: <Stand Name>
+    <Optional> need_manager: True
     workers:
       - [X,X,X,X,X,X,X]
 ```
