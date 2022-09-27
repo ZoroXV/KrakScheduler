@@ -60,3 +60,5 @@ class Event:
         print('{:=^64}'.format('Workers'))
         for worker in self.workers_list:
             worker.display()
+
+        print('{:=^64}'.format('Event End'))
