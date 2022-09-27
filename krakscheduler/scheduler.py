@@ -27,7 +27,7 @@ class Scheduler:
             for i in range(len(stand.get_staff_needed())):
                 while(stand.get_free_places(i) > 0):
                     current_worker = random.choice(workers)
-                    while current_worker.is_working(i) != 0:
+                    while current_worker.is_working(i) != 0 or current_worker.is_manager():
                         current_worker = random.choice(workers)
                     stand.add_worker(current_worker, i)
 
