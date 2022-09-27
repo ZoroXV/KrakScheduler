@@ -50,10 +50,16 @@ class Event:
     def get_managers(self):
         managers = []
         for worker in self.workers_list:
-            print(worker.get_name() + ' => ' + str(worker.is_manager()))
             if worker.is_manager():
                 managers.append(worker)
         return managers
+
+    def get_stands_with_manager(self):
+        stands = []
+        for stand in self.stands_list:
+            if stand.is_manager_need():
+                stands.append(stand)
+        return stands
 
     def display(self):
         print('{:=^64}'.format(self.name))
