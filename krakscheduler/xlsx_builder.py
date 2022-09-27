@@ -7,6 +7,7 @@ def build_schedule(scheduler):
     wb = xlsxwriter.Workbook('schedule.xlsx')
     global_sheet = wb.add_worksheet('Global')
     individual_sheet = wb.add_worksheet('Individual')
+    time_worked_sheet = wb.add_worksheet('Worked Time')
 
     global_sheet.set_column(0,scheduler.get_event().get_hours_duration(), 30)
     cell_format = wb.add_format({'bold': True, 'font_color': 'red', 'align': 'center'})
@@ -14,6 +15,8 @@ def build_schedule(scheduler):
     build_stands_names(global_sheet, scheduler.get_event().get_stands_list(), cell_format)
     build_hours_slots(global_sheet, scheduler.get_event())
     build_workers_shifts(global_sheet, scheduler.get_event().get_stands_list())
+
+    build_time_worked_sheet(time_worked_sheet, scheduler.get_event())
 
     return (wb, global_sheet, individual_sheet)
 
@@ -51,3 +54,6 @@ def build_workers_shifts(sheet, stands_list):
             sheet.write(row, col, final_string)
             row += 1
         col += 1
+
+def build_time_worked_sheet(sheet, event):
+    pass
