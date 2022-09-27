@@ -17,7 +17,7 @@ def test_stand_class():
     assert len(bar_stand.get_specific_shift_worker_list(0)) == 0
 
     ## Add staff on stand
-    worker = ks.Worker("Dylan", 1, [0,1,1,1,1,1,0], "staff")
+    worker = ks.Worker("Dylan", [0,1,1,1,1,1,0])
 
     bar_stand.add_worker(worker, 1)
 
