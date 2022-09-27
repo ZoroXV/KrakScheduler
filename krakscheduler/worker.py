@@ -52,3 +52,7 @@ class Worker:
     def clear_shifts(self):
         self.staff_shifts = [0] * len(self.hours_present)
         self.time_worked = 0
+
+    def display(self):
+        print(self.name)
+

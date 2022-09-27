@@ -4,3 +4,4 @@ from .worker import Worker
 from .scheduler import Scheduler
 
 from .xlsx_builder import *
+from .config_parser import *

@@ -130,3 +130,6 @@ dmypy.json
 
 # Excel files
 *.xlsx
+
+# Config files
+*.yml

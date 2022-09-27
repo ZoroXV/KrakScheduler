@@ -15,6 +15,7 @@ clean:
 	@rm -rf krakscheduler.egg-info/
 	@rm -rf krakscheduler/__pycache__/
 	@rm -rf tests/unit/__pycache__/
+	@rm -rf .pytest_cache/
 	@rm schedule.xlsx
 
 .PHONY:

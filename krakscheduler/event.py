@@ -1,21 +1,21 @@
+from datetime import datetime
+
 class Event:
-    def __init__(self, name, nb_stands, nb_workers, start_hour, end_hour):
+    def __init__(self, name, start_hour, end_hour, stands_list=[], workers_list=[]):
         self.name = name
-        self.nb_stands = nb_stands
-        self.nb_workers = nb_workers
         self.start_hour = start_hour
         self.end_hour = end_hour
-        self.stands_list = []
-        self.workers_list = []
+        self.stands_list = stands_list
+        self.workers_list = workers_list
 
     def get_name(self):
         return self.name
 
     def get_nb_stands(self):
-        return self.nb_stands
+        return len(self.stands_list)
 
     def get_nb_workers(self):
-        return self.nb_workers
+        return len(self.workers_list)
 
     def get_start_hour(self):
         return self.start_hour
@@ -37,16 +37,26 @@ class Event:
 
     def add_stand(self, stand):
         self.stands_list.append(stand)
-        self.nb_stands +=1
 
     def remove_stand(self, stand):
         self.stands_list.remove(stand)
-        self.nb_stands -=1
 
     def add_worker(self, worker):
         self.workers_list.append(worker)
-        self.nb_workers +=1
 
     def remove_worker(self, worker):
         self.workers_list.remove(worker)
-        self.nb_workers -=1
+
+    def display(self):
+        print('{:=^64}'.format(self.name))
+        print('{}{:.>54}'.format('Begins at:', datetime.strftime(self.start_hour, '%d/%m/%Y %Hh%M')))
+        print('{}{:.>56}'.format('Ends at:', datetime.strftime(self.end_hour, '%d/%m/%Y %Hh%M')))
+        print('{:=^64}'.format(''))
+
+        print('{:=^64}'.format('Stands'))
+        for stand in self.stands_list:
+            stand.display()
+
+        print('{:=^64}'.format('Workers'))
+        for worker in self.workers_list:
+            worker.display()

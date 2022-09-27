@@ -19,8 +19,7 @@ class Scheduler:
         self.schedule[name] = current_workers
 
     def fill_schedule(self):
-        for stand in self.stands:
-            self.get_workers_for_stand(stand, len(self.time_slots))
+        pass
 
     def get_schedule(self):
         return self.schedule
