@@ -5,6 +5,8 @@ import krakscheduler as ks
 class TestWorker:
     def setup_class(self):
         self.worker = ks.Worker("Bob", [0,1,1,1,1,1,0])
+        self.stand1 = ks.Worker("stand_1", [4]*7)
+        self.stand2 = ks.Worker("stand_2", [4]*7)
 
     def teardown_method(self):
         self.worker.clear_shifts()
