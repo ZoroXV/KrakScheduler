@@ -5,4 +5,4 @@ from .scheduler import Scheduler
 
 from .config_parser import *
 
-from .xlsx_builder.xlsx_builder import *
+from .xlsx_builder.xlsx_builder import build_schedule
