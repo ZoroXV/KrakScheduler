@@ -18,8 +18,8 @@ class TestWorker:
     #assert worker.get_role() == "staff"
 
     def test_add_shift(self):
-        self.worker.add_shift(2)
-        self.worker.add_shift(5)
+        self.worker.add_shift(2, self.stand1)
+        self.worker.add_shift(5, self.stand1)
 
         assert self.worker.is_working(1) == False
         assert self.worker.is_working(2) == True
@@ -31,12 +31,12 @@ class TestWorker:
     def test_get_time_worked(self):
         assert self.worker.get_time_worked() == 0
 
-        self.worker.add_shift(2)
-        self.worker.add_shift(5)
+        self.worker.add_shift(2, self.stand1)
+        self.worker.add_shift(5, self.stand1)
         assert self.worker.get_time_worked() == 2
 
     def test_remove_shift(self):
-        self.worker.add_shift(2)
+        self.worker.add_shift(2, self.stand1)
         assert self.worker.is_working(2) == True
 
         self.worker.remove_shift(2)
@@ -44,8 +44,8 @@ class TestWorker:
         assert self.worker.get_time_worked() == 0
 
     def test_clear_shifts(self):
-        self.worker.add_shift(3)
-        self.worker.add_shift(4)
+        self.worker.add_shift(3, self.stand1)
+        self.worker.add_shift(4, self.stand1)
         assert self.worker.get_staff_shifts() == [0,0,0,1,1,0,0]
         assert self.worker.get_time_worked() == 2
 
@@ -56,9 +56,9 @@ class TestWorker:
     def test_get_priority(self):
         assert self.worker.get_priority(3) == -4
 
-        self.worker.add_shift(0)
+        self.worker.add_shift(0, self.stand1)
         assert self.worker.get_priority(3) == -2
 
-        self.worker.add_shift(1)
-        self.worker.add_shift(2)
+        self.worker.add_shift(1, self.stand1)
+        self.worker.add_shift(2, self.stand1)
         assert self.worker.get_priority(3) == 2
