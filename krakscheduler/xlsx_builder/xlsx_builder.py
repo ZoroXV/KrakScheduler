@@ -1,5 +1,6 @@
 import xlsxwriter
 from .global_sheet import build_sheet as build_global_sheet
+from .individual_sheet import build_sheet as build_individual_sheet
 
 def build_schedule(scheduler):
     wb = xlsxwriter.Workbook('schedule.xlsx')
@@ -8,12 +9,13 @@ def build_schedule(scheduler):
     time_worked_sheet = wb.add_worksheet('Worked Time')
 
     global_sheet.set_column(0,scheduler.get_event().get_hours_duration(), 30)
-    time_worked_sheet.set_column(0,scheduler.get_event().get_hours_duration(), 30)
+    individual_sheet.set_column(0,scheduler.get_event().get_hours_duration(), 15)
+    time_worked_sheet.set_column(0,1,15)
 
     cell_format = wb.add_format({'bold': True, 'font_color': 'red', 'align': 'center'})
 
     build_global_sheet(global_sheet, scheduler.get_event(), cell_format)
-
+    build_individual_sheet(individual_sheet, scheduler.get_event(), cell_format)
     build_time_worked_sheet(time_worked_sheet, scheduler.get_event())
 
     return (wb, global_sheet, individual_sheet)
