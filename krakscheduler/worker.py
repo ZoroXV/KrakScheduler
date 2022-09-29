@@ -51,8 +51,8 @@ class Worker:
     def is_working(self, shift_index):
         return self.staff_shifts[shift_index] == 1
 
-    def add_shift(self, shift_index):
-        self.staff_shifts[shift_index] = 1
+    def add_shift(self, shift_index, stand):
+        self.staff_shifts[shift_index] = stand
         self.time_worked += 1
 
     def remove_shift(self, shift_index):
