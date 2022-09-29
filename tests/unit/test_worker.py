@@ -9,9 +9,6 @@ class TestWorker:
     def teardown_method(self):
         self.worker.clear_shifts()
 
-    def test_get_shifts(self):
-        assert self.worker.get_staff_shifts() == [None] * 7
-
     #assert worker.get_staff_shifts()[0] == 0
     #assert worker.get_time_worked() == 0
     #assert worker.is_working(5) == 0
@@ -25,6 +22,9 @@ class TestWorker:
         assert self.worker.is_working(1) == False
         assert self.worker.is_working(2) == True
         assert self.worker.is_working(5) == True
+
+    def test_get_shifts(self):
+        assert self.worker.get_staff_shifts() == [None] * 7
 
     def test_get_time_worked(self):
         assert self.worker.get_time_worked() == 0
