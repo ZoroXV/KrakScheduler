@@ -1,29 +1,10 @@
-from asyncio import current_task
-import xlsxwriter
 from datetime import datetime
 from datetime import timedelta
-
-def build_schedule(scheduler):
-    wb = xlsxwriter.Workbook('schedule.xlsx')
-    global_sheet = wb.add_worksheet('Global')
-    individual_sheet = wb.add_worksheet('Individual')
-    time_worked_sheet = wb.add_worksheet('Worked Time')
-
-    global_sheet.set_column(0,scheduler.get_event().get_hours_duration(), 30)
-    time_worked_sheet.set_column(0,scheduler.get_event().get_hours_duration(), 30)
-
-    cell_format = wb.add_format({'bold': True, 'font_color': 'red', 'align': 'center'})
-
-    build_global_sheet(global_sheet, scheduler.get_event(), cell_format)
-    build_workers_shifts(global_sheet, scheduler.get_event().get_stands_list())
-
-    build_time_worked_sheet(time_worked_sheet, scheduler.get_event())
-
-    return (wb, global_sheet, individual_sheet)
 
 def build_global_sheet(sheet, event, cell_format):
     build_stands_names(sheet, event.get_stands_list(), cell_format)
     build_hours_slots(sheet, event)
+    build_workers_shifts(sheet, event.get_stands_list())
 
 def build_stands_names(sheet, stands_list, cell_format):
     row = 0
@@ -59,19 +40,3 @@ def build_workers_shifts(sheet, stands_list):
             sheet.write(row, col, final_string)
             row += 1
         col += 1
-
-def build_time_worked_sheet(sheet, event):
-    sheet.write(0, 0, 'Name')
-    sheet.write(0, 1, 'Hours Worked')
-
-    row = 1
-
-    data = []
-    for worker in event.get_workers_list():
-        data.append((worker.get_name(), worker.get_time_worked()))
-    data.sort(key=lambda tup: tup[1])
-
-    for name, time_worked in data:
-        sheet.write(row, 0, name)
-        sheet.write(row, 1, time_worked)
-        row += 1

@@ -3,5 +3,6 @@ from .stand import Stand
 from .worker import Worker
 from .scheduler import Scheduler
 
-from .xlsx_builder import *
 from .config_parser import *
+
+from .xlsx_builder.xlsx_builder import *
