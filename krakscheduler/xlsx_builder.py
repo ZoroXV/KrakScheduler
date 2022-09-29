@@ -14,13 +14,16 @@ def build_schedule(scheduler):
 
     cell_format = wb.add_format({'bold': True, 'font_color': 'red', 'align': 'center'})
 
-    build_stands_names(global_sheet, scheduler.get_event().get_stands_list(), cell_format)
-    build_hours_slots(global_sheet, scheduler.get_event())
+    build_global_sheet(global_sheet, scheduler.get_event(), cell_format)
     build_workers_shifts(global_sheet, scheduler.get_event().get_stands_list())
 
     build_time_worked_sheet(time_worked_sheet, scheduler.get_event())
 
     return (wb, global_sheet, individual_sheet)
+
+def build_global_sheet(sheet, event, cell_format):
+    build_stands_names(sheet, event.get_stands_list(), cell_format)
+    build_hours_slots(sheet, event)
 
 def build_stands_names(sheet, stands_list, cell_format):
     row = 0
