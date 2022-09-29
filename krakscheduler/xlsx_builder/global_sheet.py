@@ -1,7 +1,7 @@
 from datetime import datetime
 from datetime import timedelta
 
-def build_global_sheet(sheet, event, cell_format):
+def build_sheet(sheet, event, cell_format):
     build_stands_names(sheet, event.get_stands_list(), cell_format)
     build_hours_slots(sheet, event)
     build_workers_shifts(sheet, event.get_stands_list())

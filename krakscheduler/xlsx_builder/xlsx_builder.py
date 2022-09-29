@@ -1,5 +1,5 @@
 import xlsxwriter
-from . import global_sheet as gs
+from .global_sheet import build_sheet as build_global_sheet
 
 def build_schedule(scheduler):
     wb = xlsxwriter.Workbook('schedule.xlsx')
@@ -12,7 +12,7 @@ def build_schedule(scheduler):
 
     cell_format = wb.add_format({'bold': True, 'font_color': 'red', 'align': 'center'})
 
-    gs.build_global_sheet(global_sheet, scheduler.get_event(), cell_format)
+    build_global_sheet(global_sheet, scheduler.get_event(), cell_format)
 
     build_time_worked_sheet(time_worked_sheet, scheduler.get_event())
 
