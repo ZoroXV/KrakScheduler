@@ -14,6 +14,7 @@ clean:
 	@rm -rf dist/
 	@rm -rf krakscheduler.egg-info/
 	@rm -rf krakscheduler/__pycache__/
+	@rm -rf krakscheduler/xlsx_builder/__pycache__/
 	@rm -rf tests/unit/__pycache__/
 	@rm -rf .pytest_cache/
 	@rm schedule.xlsx
