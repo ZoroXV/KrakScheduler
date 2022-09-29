@@ -4,7 +4,7 @@ class Worker:
     def __init__(self, name, hours_present, manager=False, stands_priority=[]):
         self.name = name
         self.hours_present = hours_present
-        self.staff_shifts = [0] * len(self.hours_present)
+        self.staff_shifts = [None] * len(self.hours_present)
         self.time_worked = 0
         self.worker_stand_priority = stands_priority
         self.manager = manager
