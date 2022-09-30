@@ -46,11 +46,15 @@ class TestWorker:
     def test_clear_shifts(self):
         self.worker.add_shift(3, self.stand1)
         self.worker.add_shift(4, self.stand1)
-        assert self.worker.get_staff_shifts() == [0,0,0,1,1,0,0]
+
+        expected = [None]*7
+        expected[3] = self.stand1
+        expected[4] = self.stand1
+        assert self.worker.get_staff_shifts() == expected
         assert self.worker.get_time_worked() == 2
 
         self.worker.clear_shifts()
-        assert self.worker.get_staff_shifts() == [0,0,0,0,0,0,0]
+        assert self.worker.get_staff_shifts() == [None]*7
         assert self.worker.get_time_worked() == 0
 
     def test_get_priority(self):
