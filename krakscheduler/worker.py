@@ -49,7 +49,7 @@ class Worker:
         return self.role
 
     def is_working(self, shift_index):
-        return self.staff_shifts[shift_index] == 1
+        return self.staff_shifts[shift_index] != None
 
     def add_shift(self, shift_index, stand):
         self.staff_shifts[shift_index] = stand
