@@ -1,10 +1,11 @@
 # KrakScheduler
 
 ## Usage
-To use KrakScheduler you have to configure your event with a YAML file.
+To use **KrakScheduler** you have to configure your event with a YAML file.
 You also need to give a CSV file (not implemented yet) to fill the workers list available to fill the schedule.
 
 ### Event Config File Template
+The config file must be named `event-config.yml`
 Following this sentence you will find a template for the config file.
 ```yaml
 ---
@@ -41,16 +42,16 @@ A Makefile is provided for an easier use. The available tasks are:
 ## Further Features
 Checked item will be in the 0.1 release
 
-- [X] Create a schedule for Kraken's Events
+- [X] Create a schedule using a YAML config and a CSV input file
 - [X] Produce a xlsx file with global and individual view of the planning
 - [X] Fill each stand with correct number of workers during all the event
-- [X] Make worker not duplicate in multiple stand for one time slot
 - [X] Use a config (yml or json) file to configure the current event we want to schedule
   - Define the begin time of the event
   - Define stands needed for the event
   - Define workers needed each hour for stands
 - [X] Possibility to define different quantity of workers needed on a stand for each time slot
-- [X] Stand can required a manager or not
-- [X] Worker can be a manager
-- [ ] Add the posibility to give a break during the event for each worker
-- [ ] Add colors and style in the produced xlsx
+- [X] Handle Stand Manager (only manager worker can fit this)
+- [X] Add the posibility to give a break during the event for each worker
+- [X] Add colors and style in the produced xlsx
+- [ ] Create links between workers, so workers can staff with their friends in priority
+- [ ] Fill schedule of some stands in priority when not enough worker to fill every worker needed by each stand
