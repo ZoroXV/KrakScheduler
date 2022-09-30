@@ -10,7 +10,7 @@ class Scheduler:
     def get_event(self):
         return self.event
 
-    def display(self):
+    def display_global(self):
         print('{:=^64}'.format('Schedule Result'))
         for stand in self.event.get_stands_list():
             print('{:=^64}'.format(stand.get_name()))
