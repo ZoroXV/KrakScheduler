@@ -17,7 +17,7 @@ def main():
 
     scheduler = ks.Scheduler(event)
     scheduler.fill_schedule()
-    scheduler.display()
+    scheduler.display_individual()
 
     wb, global_sheet, _ = ks.build_schedule(scheduler)
 
