@@ -35,5 +35,8 @@ def build_workers_shifts(sheet, worker, row):
 
     col = 1
     for slot in schedule:
-        sheet.write(row, col, slot)
+        string = ''
+        if slot:
+            string = slot.get_name()
+        sheet.write(row, col, string)
         col += 1
