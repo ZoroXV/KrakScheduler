@@ -71,10 +71,12 @@ class TestEvent():
         stand = ks.Stand("stand", [1]*7, True)
         stand.add_worker(manager_0, 0)
 
-        assert manager_0.get_staff_shifts() == [1,0,0,0,0,0,0]
+        expected = [None]*7
+        expected[0] = stand
+        assert manager_0.get_staff_shifts() == expected
 
         free_manager = self.event.pick_random_free_manager()
-        assert free_manager.get_staff_shifts() == [0,0,0,0,0,0,0]
+        assert free_manager.get_staff_shifts() == [None]*7
         assert free_manager == manager_1
 
     def test_pick_random_free_manager_none_available(self):
