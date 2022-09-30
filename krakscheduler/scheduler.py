@@ -20,6 +20,16 @@ class Scheduler:
                     display_list.append(worker.get_name())
                 print(display_list)
 
+    def display_individual(self):
+        print('{:=^64}'.format('Schedule Result'))
+        for worker in self.event.get_workers_list():
+            print('{:=^64}'.format(worker.get_name()))
+            for shift in worker.get_staff_shifts():
+                if shift:
+                    print(shift.get_name())
+                else:
+                    print('Break')
+
     def fill_schedule(self):
         workers = self.event.get_workers_list()
         for stand in self.event.get_stands_list():
