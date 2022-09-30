@@ -56,7 +56,7 @@ class Worker:
         self.time_worked += 1
 
     def remove_shift(self, shift_index):
-        self.staff_shifts[shift_index] = 0
+        self.staff_shifts[shift_index] = None
         self.time_worked -= 1
 
     def clear_shifts(self):
