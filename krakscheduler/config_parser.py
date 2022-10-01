@@ -25,7 +25,10 @@ def build_event(filename = 'event-config.yml'):
         need_manager = False
         if 'need_manager' in stand.keys():
             need_manager = True
-        stand = ks.Stand(stand['name'], stand['workers'][0], need_manager)
+        shift_duration = 1
+        if 'shift_duration' in stand.keys():
+            shift_duration = stand['shift_duration']
+        stand = ks.Stand(stand['name'], stand['workers'][0], shift_duration, need_manager)
         event.add_stand(stand)
 
     return event
