@@ -54,7 +54,7 @@ class TestEvent():
         stand_no_manager = ks.Stand("no_manager_stand", [1] * 7)
         self.event.add_stand(stand_no_manager)
 
-        stand_manager = ks.Stand("manager_stand", [1] * 7, True)
+        stand_manager = ks.Stand("manager_stand", [1] * 7, 1, True)
         self.event.add_stand(stand_manager)
 
         stands = self.event.get_stands_with_manager()
