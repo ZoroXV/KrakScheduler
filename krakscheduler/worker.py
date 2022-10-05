@@ -33,9 +33,9 @@ class Worker:
 
         for i in range(from_start + 1):
             if self.staff_shifts[i]:
-                priority += 1
-            else:
                 priority -= 1
+            else:
+                priority += 1
 
         return priority
 
