@@ -31,15 +31,18 @@ class Scheduler:
                     print('Break')
 
     def fill_schedule(self):
+        self.fill_managers()
+
         for stand in self.event.get_stands_list():
-            self.fill_manager(stand)
             for i in range(len(stand.get_staff_needed())):
                 current_free_workers = self.event.get_current_shift_free_workers(i)
                 while(stand.get_free_places(i) > 0):
                     current_worker = random.choice(current_free_workers)
-                    while current_worker.is_working(i) != 0 or current_worker.is_manager():
-                        current_worker = random.choice(current_free_workers)
                     stand.add_worker(current_worker, i)
+
+    def fill_managers(self):
+        for stand in self.event.get_stands_list():
+            self.fill_manager(stand)
 
     def fill_manager(self, stand):
         managers = self.event.get_managers()
