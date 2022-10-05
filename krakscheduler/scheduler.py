@@ -45,7 +45,6 @@ class Scheduler:
             self.fill_manager(stand)
 
     def fill_manager(self, stand):
-        managers = self.event.get_managers()
         if stand.is_manager_need():
             manager = self.event.pick_random_free_manager()
             stand.add_worker_all(manager)
