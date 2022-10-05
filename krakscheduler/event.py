@@ -50,7 +50,7 @@ class Event:
     def get_current_shift_free_workers(self, shift_index):
         free_workers = []
         for worker in self.workers_list:
-            if worker.is_current_shift_present(shift_index):
+            if worker.is_current_shift_present(shift_index) and not worker.is_working(shift_index):
                 free_workers.append(worker)
         return free_workers
 
