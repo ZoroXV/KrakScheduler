@@ -31,7 +31,7 @@ class Worker:
     def get_priority(self, from_start):
         priority = 0
 
-        for i in range(from_start + 1):
+        for i in range(from_start):
             if self.staff_shifts[i]:
                 priority -= 1
             else:
