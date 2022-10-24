@@ -1,4 +1,5 @@
 from datetime import datetime
+import random
 
 class Event:
     def __init__(self, name, start_hour, end_hour, stands_list=[], workers_list=[]):
@@ -53,6 +54,20 @@ class Event:
             if worker.is_current_shift_present(shift_index) and not worker.is_working(shift_index):
                 free_workers.append(worker)
         return free_workers
+
+    def get_available_worker(self, shift_index):
+        workers = self.get_available_workers(shift_index)
+        workers.sort(key=lambda s: s.get_priority(shift_index))
+
+        end = 0
+        goal_priority = workers[0].get_priority(shift_index)
+        for worker in workers:
+            if not worker.get_priority(shift_index) == goal_priority:
+                break
+            end += 1
+
+        priority_workers = workers[0:end]
+        return random.choice(priority_workers)
 
     def get_managers(self):
         managers = []

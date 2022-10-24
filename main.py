@@ -23,6 +23,14 @@ def main():
     scheduler.fill_schedule()
     scheduler.display_global()
 
+    time_sumup = []
+    for worker in event.get_workers_list():
+        time_sumup.append((worker.get_name(), worker.get_time_worked()))
+
+    time_sumup.sort(key=lambda tup: tup[1])
+    for t in time_sumup:
+        print(t)
+
     wb, global_sheet, _ = ks.build_schedule(scheduler)
 
     wb.close()

@@ -29,13 +29,22 @@ class Worker:
         return self.time_worked
 
     def get_priority(self, from_start):
+        combo = 1
         priority = 0
+        prev = None
 
         for i in range(from_start):
-            if self.staff_shifts[i]:
-                priority -= 1
+            cur = self.is_working(i)
+            combo = abs(combo)
+
+            if cur == True:
+                combo *= -1
+            priority += combo
+
+            if prev == cur:
+                combo += 1
             else:
-                priority += 1
+                combo = 1
 
         return priority
 
@@ -66,4 +75,3 @@ class Worker:
     def display(self):
         manager_str = '(manager)' if self.manager else ''
         print(self.name + ' ' + manager_str)
-

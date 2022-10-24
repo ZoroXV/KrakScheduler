@@ -35,9 +35,8 @@ class Scheduler:
 
         for stand in self.event.get_stands_list():
             for i in range(len(stand.get_staff_needed())):
-                current_free_workers = self.event.get_available_workers(i)
                 while(stand.get_free_places(i) > 0):
-                    current_worker = random.choice(current_free_workers)
+                    current_worker = self.event.get_available_worker(i)
                     stand.add_worker(current_worker, i)
 
     def fill_managers(self):

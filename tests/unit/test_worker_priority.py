@@ -18,7 +18,15 @@ class TestWorkerPriority:
         self.event.add_worker(self.worker2)
         self.event.add_worker(self.worker3)
 
-    def test_get_worker_basic(self):
-        worker = self.event.get_available_worker(0)
-        assert worker.get_priority(0) == 0
+    def test_get_priority_basic(self):
+        assert self.worker1.get_priority(0) == 0
+        assert self.worker1.get_priority(1) == 1
+        assert self.worker1.get_priority(2) == 3
 
+    #def test_get_worker_multile_shift(self):
+    #    self.worker1.add_shift(0, self.stand)
+    #    assert self.worker1.get_priority(3) == 1
+
+    #    self.worker1.add_shift(1, self.stand)
+    #    self.worker1.add_shift(2, self.stand)
+    #    assert self.worker1.get_priority(3) == -3
